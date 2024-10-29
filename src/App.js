@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent page reload on form submission
     if (!firstName || !lastName) {
       setError('Both fields are required.');
     } else {
