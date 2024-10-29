@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 import './App.css';
 
+export const handleSubmit = (e, firstName, lastName, setFullName, setError) => {
+  e.preventDefault(); // Prevents page reload
+  if (!firstName || !lastName) {
+    setError('Both fields are required.');
+  } else {
+    setFullName(`${firstName} ${lastName}`);
+    setError('');
+  }
+};
+
 function App() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents page reload
-    if (!firstName || !lastName) {
-      setError('Both fields are required.');
-    } else {
-      setFullName(`${firstName} ${lastName}`);
-      setError('');
-      setFirstName('');
-      setLastName('');
-    }
-  };
-
   return (
     <div className="form-container">
       <h1>Full Name Display</h1>
-      <form onSubmit={handleSubmit} role="form">
+      <form
+        onSubmit={(e) => handleSubmit(e, firstName, lastName, setFullName, setError)}
+        role="form"
+      >
         <div className="input-group">
           <label>First Name:</label>
           <input
