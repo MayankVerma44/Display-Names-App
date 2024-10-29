@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload on form submission
+    e.preventDefault(); // Prevents page reload
     if (!firstName || !lastName) {
       setError('Both fields are required.');
     } else {
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="form-container">
       <h1>Full Name Display</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} role="form">
         <div className="input-group">
           <label>First Name:</label>
           <input
